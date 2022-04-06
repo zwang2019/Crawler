@@ -33,4 +33,4 @@ for game in games:
     print('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
 
 
-print('test for the github update')
+print('test for the github update !')
