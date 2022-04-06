@@ -31,3 +31,6 @@ for game in games:
         print(table)
         print('#########')
     print('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
+
+
+print('test for the github update')
