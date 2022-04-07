@@ -137,7 +137,7 @@ def query_stats_info(new_stats_data, new_players_data, url, gameid, round, home_
                     selected_p = p_data[(p_data['displayName'] == displayName) & (p_data['dob'] == player_dob)]
 
                     if selected_p.shape[0] == 0:
-                        selected_p.at[0, 'playerId'] = int('2022' + str(random.randint(0,999999)).zfill(6))
+                        selected_p.at[0, 'playerId'] = int('2022' + str(random.randint(0, 999999)).zfill(6))
                         selected_p.at[0, 'displayName'] = displayName
                         selected_p.at[0, 'height'] = player_height
                         selected_p.at[0, 'weight'] = player_weight
@@ -320,13 +320,64 @@ def query_games_info(new_stats_data, new_players_data, new_games_data, crawl_ran
     return new_stats_data, new_players_data, new_games_data
 
 
+def query_prediction_format(query_round):
+    submission = pd.DataFrame()
+    # Crawling Website
+    url = 'https://afltables.com/afl/seas/2022.html'
+    # Fake a user header
+    headers = {'User-Agent': UserAgent().random}
+
+    # Request the data
+    datas = requests.get(url=url, headers=headers)
+    html = datas.text
+
+    # For Loop crawling, time interval is demanded.
+    sleep(1)
+
+    soup = BeautifulSoup(html, 'lxml')
+    c_games = soup.find_all('table', attrs={'style': 'font: 12px Verdana;', 'width': "100%", 'border': "1"})
+
+    # each i is a table
+    for i in tqdm(range((query_round - 1) * 10, query_round * 10)):
+
+        if i % 10 != 9:
+
+            tables = c_games[i].find_all('td')
+
+            r = i // 10 + 1
+            id = i % 10 + 1
+
+            for j in range(len(tables)):
+
+                if j == 0:
+                    home_team = tables[j].text
+                    home_team_index = 'https://afltables.com/afl' + tables[j].find_all('a', href=True)[0]['href'][2:]
+
+                if j == 4:
+                    away_team = tables[j].text
+                    away_team_index = 'https://afltables.com/afl' + tables[j].find_all('a', href=True)[0]['href'][2:]
+
+            temp_query_prediction_row = pd.DataFrame()
+            temp_query_prediction_row.at[0, 'Host'] = home_team
+            temp_query_prediction_row.at[0, 'Away'] = away_team
+
+            submission = pd.concat([submission, temp_query_prediction_row])
+
+    submission.to_csv('./output/r' + str(query_round) + '_submission.csv', index=False)
+    return
+
+
 new_players_data = players.copy()
 new_stats_data = stats.copy()
-new_games_data= games.copy()
+new_games_data = games.copy()
 
 # Change the query round:
-new_stats_data, new_players_data, new_games_data = query_games_info(new_stats_data, new_players_data, new_games_data, 0,3)
+new_stats_data, new_players_data, new_games_data = query_games_info(new_stats_data, new_players_data, new_games_data, 0,
+                                                                    3)
 
 new_stats_data.to_csv('./output/stats.csv', index=False)
 new_players_data.to_csv('./output/players.csv', index=False)
 new_games_data.to_csv('./output/games.csv', index=False)
+
+query_round = 4
+query_prediction_format(query_round)
