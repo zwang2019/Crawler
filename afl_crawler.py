@@ -8,6 +8,7 @@ import pandas as pd
 import requests
 from fake_useragent import UserAgent
 from time import sleep
+import random
 
 from bs4 import BeautifulSoup
 import re
@@ -24,6 +25,7 @@ pd.set_option('display.max_rows', None)
 warnings.filterwarnings('ignore')
 
 debug = False
+random.seed(666)
 
 # Query and Insert the old database !
 games = pd.read_csv(r'./data/games.csv')
@@ -135,7 +137,7 @@ def query_stats_info(new_stats_data, new_players_data, url, gameid, round, home_
                     selected_p = p_data[(p_data['displayName'] == displayName) & (p_data['dob'] == player_dob)]
 
                     if selected_p.shape[0] == 0:
-                        selected_p.at[0, 'playerId'] = int(8888866666)
+                        selected_p.at[0, 'playerId'] = int('2022' + str(random.randint(0,999999)).zfill(6))
                         selected_p.at[0, 'displayName'] = displayName
                         selected_p.at[0, 'height'] = player_height
                         selected_p.at[0, 'weight'] = player_weight
