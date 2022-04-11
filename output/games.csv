@@ -1,4 +1,13 @@
 gameId,year,round,date,venue,startTime,attendance,homeTeam,homeTeamScore,awayTeam,awayTeamScore,rainfall
+2022R409,2022.0,R4,10-Apr-2022,Carrara,4:10 PM,14349.0,Gold Coast,92.0,Carlton,62.0,0.0
+2022R408,2022.0,R4,10-Apr-2022,M.C.G.,3:20 PM,30926.0,Hawthorn,73.0,St Kilda,142.0,0.0
+2022R407,2022.0,R4,10-Apr-2022,Docklands,1:10 PM,24906.0,Essendon,103.0,Adelaide,99.0,0.0
+2022R406,2022.0,R4,09-Apr-2022,M.C.G.,7:25 PM,43645.0,Richmond,99.0,Western Bulldogs,61.0,0.0
+2022R405,2022.0,R4,09-Apr-2022,Perth Stadium,5:25 PM,30201.0,Fremantle,88.0,Greater Western Sydney,54.0,0.0
+2022R404,2022.0,R4,09-Apr-2022,Docklands,4:35 PM,25897.0,Collingwood,74.0,West Coast,87.0,0.0
+2022R403,2022.0,R4,09-Apr-2022,S.C.G.,2:40 PM,22307.0,Sydney,86.0,North Melbourne,75.0,0.0
+2022R402,2022.0,R4,08-Apr-2022,Kardinia Park,7:50 PM,20505.0,Geelong,80.0,Brisbane Lions,70.0,0.0
+2022R401,2022.0,R4,07-Apr-2022,Adelaide Oval,7:10 PM,23058.0,Port Adelaide,36.0,Melbourne,68.0,0.0
 2022R309,2022.0,R3,03-Apr-2022,Perth Stadium,4:20 PM,0.0,West Coast,47.0,Fremantle,102.0,0.0
 2022R308,2022.0,R3,03-Apr-2022,Docklands,3:20 PM,31933.0,St Kilda,117.0,Richmond,84.0,0.0
 2022R307,2022.0,R3,03-Apr-2022,M.C.G.,1:10 PM,66317.0,Carlton,74.0,Hawthorn,73.0,0.0

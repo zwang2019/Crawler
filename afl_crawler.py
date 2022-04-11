@@ -254,7 +254,7 @@ def query_games_info(new_stats_data, new_players_data, new_games_data, crawl_ran
     c_games = soup.find_all('table', attrs={'style': 'font: 12px Verdana;', 'width': "100%", 'border': "1"})
 
     # each i is a table
-    for i in tqdm(range(crawl_range_start_round, crawl_range_end_round * 10)):
+    for i in tqdm(range(crawl_range_start_round * 10, crawl_range_end_round * 10)):
 
         if i % 10 != 9:
 
@@ -372,12 +372,12 @@ new_stats_data = stats.copy()
 new_games_data = games.copy()
 
 # Change the query round:
-new_stats_data, new_players_data, new_games_data = query_games_info(new_stats_data, new_players_data, new_games_data, 0,
-                                                                    3)
+new_stats_data, new_players_data, new_games_data = query_games_info(new_stats_data, new_players_data, new_games_data, 3,
+                                                                    4)
 
 new_stats_data.to_csv('./output/stats.csv', index=False)
 new_players_data.to_csv('./output/players.csv', index=False)
 new_games_data.to_csv('./output/games.csv', index=False)
 
-query_round = 4
+query_round = 5
 query_prediction_format(query_round)
