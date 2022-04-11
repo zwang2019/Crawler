@@ -134,7 +134,8 @@ def query_stats_info(new_stats_data, new_players_data, url, gameid, round, home_
                     player_height = team_player_info[1]
                     player_weight = team_player_info[2]
 
-                    selected_p = p_data[(p_data['displayName'] == displayName) & (p_data['dob'] == player_dob)]
+                    selected_p = p_data[(p_data['displayName'] == displayName) & (pd.to_datetime(p_data['dob']) == pd.to_datetime(player_dob))]
+                    # problem is dob
 
                     if selected_p.shape[0] == 0:
                         selected_p.at[0, 'playerId'] = int('2022' + str(random.randint(0, 999999)).zfill(6))
