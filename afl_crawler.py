@@ -380,5 +380,6 @@ new_stats_data.to_csv('./output/stats.csv', index=False)
 new_players_data.to_csv('./output/players.csv', index=False)
 new_games_data.to_csv('./output/games.csv', index=False)
 
+# note this is the next round
 query_round = 6
 query_prediction_format(query_round)
