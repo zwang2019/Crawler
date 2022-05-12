@@ -373,13 +373,13 @@ new_stats_data = stats.copy()
 new_games_data = games.copy()
 
 # Change the query round:
-new_stats_data, new_players_data, new_games_data = query_games_info(new_stats_data, new_players_data, new_games_data, 6,
-                                                                    7)
+new_stats_data, new_players_data, new_games_data = query_games_info(new_stats_data, new_players_data, new_games_data, 7,
+                                                                    8)
 
 new_stats_data.to_csv('./output/stats.csv', index=False)
 new_players_data.to_csv('./output/players.csv', index=False)
 new_games_data.to_csv('./output/games.csv', index=False)
 
 # note this is the next round
-query_round = 8
+query_round = 9
 query_prediction_format(query_round)
